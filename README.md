@@ -1,8 +1,8 @@
 # taktgenerator
 A Python GUI for the Raspberry Pi controlling the FMC Clock Generator.\
-For the connection between Raspberry Pi and FMC Clock Generator a adapter is needed.
 All 4 output channels of the Si5394 are configurable up to 720 MHz.
 The *taktgenerator* can synchronize the output phase to one of two reference input clocks.
+For the connection between Raspberry Pi and FMC Clock Generator a adapter is needed.
 
 ![GUI screenshot](/img/ui.png)
 
@@ -12,6 +12,9 @@ When used as clock generator may disable screen-blanking in the `raspi-config`.
 
 Start class: TaktUI.py\
 `python3 TaktUI.py`
+
+Start via ssh on the Raspberry:\
+`env DISPLAY=:0 ./TaktUI.py`
 
 # Installation requirements
 Following Python libraries are needed:

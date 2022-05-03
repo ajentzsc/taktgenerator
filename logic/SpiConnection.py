@@ -24,9 +24,8 @@ class Connection:
 
         # messages
         self.preamble   = [(0x0B24, 0xC0),(0x0B25, 0x00),(0x0540, 0x01)]    # preamble for pll changes
-        self.postamble  = [(0x0540, 0x00),(0x0B24, 0xC3),(0x0B25, 0x02)]    # postamble for pll changes
         self.softReset  = [(0x001C, 0x01)]  # soft reset
-        self.postamble2  = [(0x0514, 0x01), (0x001C, 0x01), (0x0540, 0x00), (0x0B24, 0xC3), (0x0B25, 0x02)]
+        self.postamble  = [(0x0514, 0x01), (0x001C, 0x01), (0x0540, 0x00), (0x0B24, 0xC3), (0x0B25, 0x02)]
 
         # commands
         self.set_adr = 0x00     # set read / write address
@@ -157,10 +156,7 @@ class Connection:
         time.sleep(0.3) # 4.2 Dynamic PLL Changes --> 300ms wait
         self.__writeList(data)
 
-        self.__writeList(self.postamble2)
-        # self.__writeList(self.softReset)
-        # time.sleep(0.1)
-        # self.__writeList(self.postamble)
+        self.__writeList(self.postamble)
         self.callback("wrote {} register".format(len(data)))
 
 
